@@ -29,7 +29,7 @@ int change_load_segment(t_dset *dset, t_woody *woody)
 		clock_t tic = clock();
 		g_decryptor[i] = '0' + (tic % 10);
 	}
-	g_decryptor[len - 1] = 0x10;
+	g_decryptor[len - 1] = 10;
 	ft_memmove(ptr, g_decryptor, len);
 	ft_memmove(ptr + len, dset, sizeof(t_dset));
 
