@@ -23,6 +23,13 @@ int change_load_segment(t_dset *dset, t_woody *woody)
 	woody->code->p_filesz += g_decryptor_len;
 	woody->code->p_flags = woody->code->p_flags | PF_W; // add the writable flag: PF_W (== 0b010); all flags: PF_R | PF_W | PF_X == 0b111 == 0x7
 	len = g_decryptor_len - sizeof(t_dset);
+
+	for (int i = len - 9; i < len; ++i)
+	{
+		clock_t tic = clock();
+		g_decryptor[i] = '0' + (tic % 10);
+	}
+	g_decryptor[len - 1] = 0x10;
 	ft_memmove(ptr, g_decryptor, len);
 	ft_memmove(ptr + len, dset, sizeof(t_dset));
 
