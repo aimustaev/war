@@ -1,4 +1,4 @@
-#include "war.h"
+#include "death.h"
 
 Elf64_Phdr *get_load_segment(t_woody *woody)
 {

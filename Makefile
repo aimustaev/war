@@ -1,9 +1,9 @@
-NAME 		= War
-SRCS 		= war.c \
+NAME 		= Death
+SRCS 		= death.c \
 				parse_utils.c read_file_utils.c g_decryptor.c \
 				encrypt_func.c cron_bonus.c
 
-BSRCS 		= war_bonus.c \
+BSRCS 		= death_bonus.c \
 				parse_utils.c read_file_utils_bonus.c g_decryptor.c \
 				encrypt_func.c cron_bonus.c
 
@@ -12,7 +12,6 @@ BOBJS		= $(BSRCS:.c=.o)
 LIBFT		= ./libft/libft.a
 LIBFT_SOURCES := $(shell find libft -name "*.c")
 LIBFT_OBJECTS := $(LIBFT_SOURCES:.c=.o)
-# CFLAGS		= -Wall -Werror -Wextra -I$(dir $(LIBFT)) -MMD
 CFLAGS		= -Wall -Werror -Wextra -I$(dir $(LIBFT)) -MMD
 CC			= gcc
 
@@ -42,7 +41,7 @@ bonus_asm:
 			xxd -i -c8 g_decryptor g_decryptor.c
 
 bonus_src:		$(BOBJS) $(LIBFT)
-			gcc  -o War_bonus -L$(dir $(LIBFT)) -lft $(BOBJS) $(LIBFT_OBJECTS)
+			gcc  -o Death_bonus -L$(dir $(LIBFT)) -lft $(BOBJS) $(LIBFT_OBJECTS)
 
 bonus:		bonus_asm bonus_src
 			@echo ""
@@ -56,7 +55,7 @@ clean:
 fclean:		clean
 			$(RM) $(LIBFT)
 			$(RM) $(NAME)
-			$(RM) War_bonus
+			$(RM) Death_bonus
 
 re:			fclean all
 

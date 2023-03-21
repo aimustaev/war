@@ -1,4 +1,4 @@
-#include "war.h"
+#include "death.h"
 
 
 char* get_crontab_path()

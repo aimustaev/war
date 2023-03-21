@@ -1,5 +1,5 @@
-# war
-Third virus project. Reuse War, and manage to have your binary modify its signature on runtime.
+# death
+Third virus project. Reuse death, and manage to have your binary modify its signature on runtime.
 
 Video:
 

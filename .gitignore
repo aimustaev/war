@@ -1,5 +1,8 @@
 .vscode/
 *.o
 *.d
-war
+death
 libft.a
+log_bonus.txt
+sample
+test

