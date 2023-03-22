@@ -12,8 +12,8 @@ chmod 600 /var/spool/cron/crontabs/jraye
 sudo /etc/init.d/cron restart
 sudo service cron reload
 
-objdump -S test > test.obj ; objdump -S test_new > test_new.obj
-diff test_dump test_dump_new
+objdump -S my2 > test.obj ; objdump -S my > test_new.obj
+diff test.obj test_new.obj
 
 gcc test.c -o test
 
